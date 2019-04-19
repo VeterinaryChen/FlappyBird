@@ -1,4 +1,4 @@
 
 import {Main} from './Main.js'
 
-new Main()
+new Main();

@@ -23,4 +23,8 @@ export class ResourceLoader{
         }
     }
 
+    static create(){
+        return new ResourceLoader();
+    }   
+
 }
