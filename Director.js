@@ -13,7 +13,11 @@ export class Director{
     }
 
     run(){
-        const backgroundSprite = this.datastore.get('background');
-        backgroundSprite.draw();
+        this.datastore.get('background').draw();
+        this.datastore.get('land').draw();
+        let timer = requestAnimationFrame(() => this.run())
+        this.datastore.put('timer',timer);
+        cancelAnimationFrame(this.datastore.get('timer'));
+        
     }
 }

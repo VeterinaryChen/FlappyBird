@@ -8,7 +8,7 @@ export class DataStore {
     }
 
     constructor() {
-        this.map = new map();
+        this.map = new Map();
     }
 
     put(key, value) {
@@ -27,5 +27,6 @@ export class DataStore {
         for (let value of this.map.values()){
             value = null; 
         }
+        this.map.clear();
     }
 }

@@ -10,6 +10,7 @@ import {
 import {
     Director
 } from "./Director.js";
+import { Land } from "./js/runtime/Land.js";
 
 export class Main {
     constructor() {
@@ -27,7 +28,7 @@ export class Main {
     }
 
     init() {
-        this.dataStore.put('background', Background);
+        this.dataStore.put('background', Background).put('land',Land);
         Director.getInstance.run();
     }
 

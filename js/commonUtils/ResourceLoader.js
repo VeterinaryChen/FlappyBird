@@ -3,9 +3,9 @@ import {Resources} from "./Resources.js";
 export class ResourceLoader{
     
     constructor(){
-        this.map = new map(Resources);
+        this.map = new Map(Resources);
         for (let [key,value] of this.map){
-            const image = new image();
+            const image = new Image();
             image.src = value;
             this.map.set(key,image);
         }
@@ -21,7 +21,7 @@ export class ResourceLoader{
                 }
             }
         }
-    }
+    }   
 
     static create(){
         return new ResourceLoader();
