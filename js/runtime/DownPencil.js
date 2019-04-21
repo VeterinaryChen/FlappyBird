@@ -1,4 +1,5 @@
 import { Pencil } from "./Pencil.js";
+import { Sprite } from "../commonUtils/Sprite.js";
 
 export class DownPencil extends Pencil{
     

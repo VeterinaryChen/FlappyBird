@@ -11,12 +11,14 @@ import {
     Director
 } from "./Director.js";
 import { Land } from "./js/runtime/Land.js";
+import {Birds} from "./js/player/Birds.js";
 
 export class Main {
     constructor() {
         this.canvas = document.getElementById('game_canvas');
         this.ctx = this.canvas.getContext('2d');
         this.dataStore = DataStore.getInstance();
+        this.director = Director.getInstance();
         const Loader = ResourceLoader.create();
         Loader.onLoaded(map => this.onResourceFirstLoaded(map));
     }
@@ -28,8 +30,15 @@ export class Main {
     }
 
     init() {
-        this.dataStore.put('background', Background).put('land',Land);
-        Director.getInstance().run();
+        //判断游戏是否结束
+        this.director.isGameOver = false;
+
+        this.dataStore.put('background', Background)
+            .put('land',Land)
+            .put('pencils',[])
+            .put('birds',Birds);
+        this.director.createPencil();
+        this.director.run();
     }
 
 
