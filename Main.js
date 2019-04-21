@@ -18,7 +18,7 @@ export class Main {
         this.ctx = this.canvas.getContext('2d');
         this.dataStore = DataStore.getInstance();
         const Loader = ResourceLoader.create();
-        Loader.onLoaded(map => this.onResourceFirstLoaded(map))
+        Loader.onLoaded(map => this.onResourceFirstLoaded(map));
     }
 
     onResourceFirstLoaded(map) {

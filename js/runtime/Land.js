@@ -1,4 +1,5 @@
 import { Sprite } from "../commonUtils/Sprite.js";
+import { Director } from "../../Director.js";
 
 export class Land extends Sprite{
     
@@ -10,7 +11,7 @@ export class Land extends Sprite{
             image.width,image.height);
         // 地板的变化坐标与移动速度
         this.landX = 0;
-        this.landSpeed = 2; 
+        this.landSpeed = Director.getInstance().landSpeed; 
     }
 
     draw(){

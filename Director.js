@@ -10,6 +10,7 @@ export class Director{
 
     constructor(){
         this.datastore = DataStore.getInstance();
+        this.moveSpeed = 2;
     }
 
     run(){
@@ -17,7 +18,7 @@ export class Director{
         this.datastore.get('land').draw();
         let timer = requestAnimationFrame(() => this.run())
         this.datastore.put('timer',timer);
-        cancelAnimationFrame(this.datastore.get('timer'));
+        //cancelAnimationFrame(this.datastore.get('timer'));
         
     }
 }
