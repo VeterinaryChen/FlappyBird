@@ -1,4 +1,6 @@
-
+import {
+  DataStore
+} from "./js/commonUtils/DataStore.js";
 // 导演类，控制整个游戏的逻辑
 export class Director{
     static getInstance(){

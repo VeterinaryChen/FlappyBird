@@ -20,7 +20,7 @@ export class Main {
         const Loader = ResourceLoader.create();
         Loader.onLoaded(map => this.onResourceFirstLoaded(map));
     }
-
+    
     onResourceFirstLoaded(map) {
         this.dataStore.ctx = this.ctx;
         this.dataStore.res = map;
@@ -29,7 +29,7 @@ export class Main {
 
     init() {
         this.dataStore.put('background', Background).put('land',Land);
-        Director.getInstance.run();
+        Director.getInstance().run();
     }
 
 
