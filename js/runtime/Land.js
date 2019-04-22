@@ -11,7 +11,7 @@ export class Land extends Sprite{
             image.width,image.height);
         // 地板的变化坐标与移动速度
         this.landX = 0;
-        this.landSpeed = Director.getInstance().landSpeed; 
+        this.landSpeed = Director.getInstance().moveSpeed;
     }
 
     draw(){
