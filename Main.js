@@ -37,8 +37,23 @@ export class Main {
             .put('land',Land)
             .put('pencils',[])
             .put('birds',Birds);
+        this.registerEvent();
         this.director.createPencil();
         this.director.run();
+    }
+
+    // 注册事件
+    registerEvent(){
+        this.canvas.addEventListener('touchstart',e => {
+            // 屏蔽事件冒泡
+            e.preventDefault();
+            if (this.director.isGameOver){
+                this.init();
+            }
+            else{
+                this.director.birdsEvent();
+            }
+        })
     }
 
 

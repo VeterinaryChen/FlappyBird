@@ -27,6 +27,14 @@ export class Director{
         this.dataStore.get('pencils').push(new DownPencil(top));
     }
 
+    // 小鸟逻辑
+    birdsEvent(){
+        for(let i=0 ; i<3 ; i++){
+            this.dataStore.get('birds').y[i] = this.dataStore.get('birds').birdsY[i];
+        }
+        this.dataStore.get('birds').time = 0;
+    }
+
     run(){
         //判断游戏是否结束
         if (!isGameOver){

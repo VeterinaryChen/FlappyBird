@@ -6,7 +6,7 @@ export class Birds extends Sprite{
     constructor(){
         const image = Sprite.getImage('birds');
         super(image,0,0,image.width,image.height,
-            0,0,image.width.image.height);
+            0,0,image.width,image.height);
 
         //  鸟的三种状态需要数组去存储
         //  鸟的宽是34，上下边距10，左右边距9
@@ -38,6 +38,18 @@ export class Birds extends Sprite{
         }
         //减速器
         this.index = Math.floor(this.count);
+
+        // 模拟重力加速度
+        const g = 0.98 / 2.4;
+        // 向上移动一点位移量
+        const offSetUp = 30;
+        // 小鸟的位移
+        const offSetY = (g * this.time * this.time - offSetUp) / 2;
+
+        for (let i=0 ; i<=2 ; i++){
+            this.birdsY[i] = this.y[i] + offSetY;
+        }
+        this.time ++;
 
         super.draw(
             this.img,
