@@ -1,17 +1,19 @@
 import { Pencil } from "./Pencil.js";
 import { Sprite } from "../commonUtils/Sprite.js";
+import {
+  DataStore
+} from "../commonUtils/DataStore.js";
 
 export class DownPencil extends Pencil{
     
-    constructor(top){
-        const image = Sprite.getImage('pencilDown');
-        super();
-    }
+  constructor(top) {
+    const image = Sprite.getImage('pencilDown');
+    super(image, top);
+  }
 
-    draw(){
-        // 两根铅笔之间的间隙，设置为屏幕高度的1/5
-        let gap = window.innerHeight / 5;
-        this.y = this.top + gap;
-        super.draw();
-    }
+  draw() {
+    let gap = DataStore.getInstance().canvas.height / 5;
+    this.y = this.top + gap;
+    super.draw();
+  }
 }

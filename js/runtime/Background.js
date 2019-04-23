@@ -1,5 +1,5 @@
 import { Sprite } from "../commonUtils/Sprite.js";
-
+import {DataStore} from "../commonUtils/DataStore.js";
 //背景
 export class Background extends Sprite{
     constructor(){
@@ -9,6 +9,7 @@ export class Background extends Sprite{
         super(image,
             0,0,
             image.width,image.height,
-            window.innerWidth,window.innerHeight);
+            0,0,
+          DataStore.getInstance().canvas.width, DataStore.getInstance().canvas.height);
     }
 }   

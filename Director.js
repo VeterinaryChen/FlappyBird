@@ -85,7 +85,7 @@ export class Director{
     run(){
         this.check();
         //判断游戏是否结束
-        if (!isGameOver){
+        if (!this.isGameOver){
             //加载背景
             this.dataStore.get('background').draw();
 
@@ -95,7 +95,7 @@ export class Director{
                 pencils.shift();
                 pencils.shift();
             }
-            if (pencils[0].x <= (window.innerWidth - pencils[0].width) /2 && pencils.length === 2){
+          if (pencils[0].x <= (DataStore.getInstance().canvas.width - pencils[0].width) /2 && pencils.length === 2){
                 this.createPencil();
             }
             this.dataStore.get('pencils').forEach(function (value) {
@@ -115,6 +115,8 @@ export class Director{
         else{
             cancelAnimationFrame(this.dataStore.get('timer'));
             this.dataStore.destroy();
+          //触发微信小游戏垃圾回收
+            wx.triggerGC();
         }
     }
 }
