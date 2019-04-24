@@ -40,11 +40,11 @@ export class Birds extends Sprite{
         this.index = Math.floor(this.count);
 
         // 模拟重力加速度
-        const g = 0.98 / 2.4;
+        const g = 0.98 / 2.6;
         // 向上移动一点位移量
-        const offSetUp = 30;
+        const offSetUp = 35;
         // 小鸟的位移
-        const offSetY = (g * this.time * this.time - offSetUp) / 2;
+        const offSetY = (g * this.time * (this.time - offSetUp)) / 2;
 
         for (let i=0 ; i<=2 ; i++){
             this.birdsY[i] = this.y[i] + offSetY;

@@ -1,5 +1,6 @@
 import { Sprite } from "../commonUtils/Sprite.js";
 import { Director } from "../../Director.js";
+import {DataStore} from "../commonUtils/DataStore";
 
 export class Land extends Sprite{
     
@@ -7,7 +8,7 @@ export class Land extends Sprite{
         const image = Sprite.getImage('land');
         super(image,0,0,
             image.width,image.height,
-            0,window.innerHeight - image.height,
+          0, DataStore.getInstance().canvas.height - image.height,
             image.width,image.height);
         // 地板的变化坐标与移动速度
         this.landX = 0;
@@ -24,8 +25,8 @@ export class Land extends Sprite{
             this.srcY,
             this.srcW,
             this.srcH,
-            -this.srcX,
-            this.srcY,
+            -this.x,
+            this.y,
             this.width,
             this.height)
     }

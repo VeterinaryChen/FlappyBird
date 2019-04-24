@@ -15,7 +15,7 @@ export class Director{
 
     constructor(){
         this.dataStore = DataStore.getInstance();
-        this.moveSpeed = 2;
+        this.moveSpeed = 1;
     }
 
     //创建pencil
@@ -50,7 +50,9 @@ export class Director{
     check(){
         const birds = this.dataStore.get('birds');
         const land = this.dataStore.get('land');
-        const pencils = this.dataStore.get('pencils')
+        const pencils = this.dataStore.get('pencils');
+        const score = this.dataStore.get('score');
+
         //  地板撞击判断
         if( birds.birdsY[0] + birds.birdsHeight[0] >= land.y){
             this.isGameOver = true;
@@ -64,7 +66,7 @@ export class Director{
             right:birds.birdsX[0] + birds.birdsWidth[0]
         };
         const length = pencils.length;
-        // 循环判断撞击
+        // 循环判断撞击,若边框值相等时则视为撞击
         for (let i=0 ; i<length ; i++){
             const pencil = pencils[i];
             // 铅笔的边框模型
@@ -80,6 +82,11 @@ export class Director{
             }
         }
 
+        //  加分逻辑
+        if (birds.birdsX[0] > pencils[0].x + pencils[0].width && score.isScore){
+            score.isScore = false;
+            score.scoreNumber++;
+        }
     }
 
     run(){
@@ -94,6 +101,8 @@ export class Director{
             if (pencils[0].x + pencils[0].width <= 0 && pencils.length === 4){
                 pencils.shift();
                 pencils.shift();
+                this.dataStore.get('score').isScore = true;
+
             }
           if (pencils[0].x <= (DataStore.getInstance().canvas.width - pencils[0].width) /2 && pencils.length === 2){
                 this.createPencil();
@@ -105,6 +114,9 @@ export class Director{
             //加载地面
             this.dataStore.get('land').draw();
 
+            //加载分数
+            this.dataStore.get('score').draw();
+
             //加载鸟
             this.dataStore.get('birds').draw();
 
@@ -113,6 +125,8 @@ export class Director{
 
         }
         else{
+            console.log("游戏结束！");
+            this.dataStore.get('startButton').draw();
             cancelAnimationFrame(this.dataStore.get('timer'));
             this.dataStore.destroy();
           //触发微信小游戏垃圾回收
