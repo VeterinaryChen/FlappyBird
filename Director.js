@@ -20,8 +20,8 @@ export class Director{
 
     //创建pencil
     createPencil(){
-        const minTop = window.innerHeight/8;
-        const maxTop = window.innerHeight/2;
+        const minTop = DataStore.getInstance().canvas.height/8;
+        const maxTop = DataStore.getInstance().canvas.height/2;
         const top = minTop + Math.random() * (maxTop - minTop);
         this.dataStore.get('pencils').push(new UpPencil(top));
         this.dataStore.get('pencils').push(new DownPencil(top));

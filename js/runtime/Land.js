@@ -16,7 +16,7 @@ export class Land extends Sprite{
     }
 
     draw(){
-        if (this.landX > (this.img.width - window.innerWidth)){
+        if (this.landX > (this.img.width - DataStore.getInstance().canvas.width)){
             this.landX = 0;
         }
         this.landX = this.landX + this.landSpeed;

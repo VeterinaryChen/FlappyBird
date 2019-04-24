@@ -13,6 +13,6 @@ export class Score{
     draw(){
         this.ctx.font = '25px Arial';
         this.ctx.fillStyle = '#ffcbeb';
-        this.ctx.fillText(this.scoreNumber , window.innerWidth/2 , window.innerHeight/14 ,1000 );
+        this.ctx.fillText(this.scoreNumber , DataStore.getInstance().canvas.width/2 , DataStore.getInstance().canvas.height/14 ,1000 );
     }
 }
